@@ -1,0 +1,36 @@
+{
+  "name": "vuenic-ui",
+  "version": "0.0.1",
+  "description": "极致简约、优雅现代、快速高效的 Vue 3 组件库",
+  "keywords": [
+    "vue",
+    "vue3",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend",
+    "vuenic",
+    "vuenic-ui",
+    "modern",
+    "elegant",
+    "efficient"
+  ],
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.15",
+    "vue-router": "^4.0.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.12",
+    "vue-tsc": "^1.8.27"
+  }
+}
