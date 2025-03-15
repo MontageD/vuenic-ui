@@ -12,7 +12,7 @@ const toggleTheme = () => {
 </script>
 
 <template>
-  <div class="app">
+  <div class="app" :class="{ 'docs': $route.path.startsWith('/docs') }">
     <nav class="nav">
       <router-link to="/" class="logo">
         <span class="logo-text">Vuenic UI</span>
@@ -58,6 +58,10 @@ const toggleTheme = () => {
 </template>
 
 <style lang="scss" scoped>
+@use '@/styles/variables.scss' as *;
+@use 'sass:map';
+@use 'sass:color';
+
 .app {
   min-height: 100vh;
   display: flex;
@@ -75,8 +79,16 @@ const toggleTheme = () => {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 48px;
   z-index: 100;
+  max-width: none;
+
+  // 文档页面时的样式
+  .docs & {
+    background: map.get($neutrals, 'white');
+    border-bottom: 1px solid map.get($neutrals, 'gray-2');
+    box-shadow: none;
+  }
 }
 
 .logo {
@@ -84,14 +96,20 @@ const toggleTheme = () => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-right: 48px;
 }
 
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
-  background: linear-gradient(45deg, #1890ff, #722ed1);
+  background: linear-gradient(45deg, map.get(map.get($colors, 'primary'), 'base'), map.get(map.get($colors, 'primary'), 'dark'));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  // 文档页面时的样式
+  .docs & {
+    font-size: 1.25rem;
+  }
 }
 
 .nav-links {
@@ -101,7 +119,7 @@ const toggleTheme = () => {
 }
 
 .nav-links a {
-  color: #666;
+  color: map.get($neutrals, 'gray-6');
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
@@ -111,7 +129,7 @@ const toggleTheme = () => {
 }
 
 .nav-links a:hover {
-  color: #1890ff;
+  color: map.get(map.get($colors, 'primary'), 'base');
 }
 
 .nav-links a::after {
@@ -121,34 +139,56 @@ const toggleTheme = () => {
   left: 0;
   width: 100%;
   height: 2px;
-  background: #1890ff;
+  background: map.get(map.get($colors, 'primary'), 'base');
   transform: scaleX(0);
   transition: transform 0.3s;
 }
 
-.nav-links a:hover::after,
-.nav-links a.router-link-active::after {
-  transform: scaleX(1);
-}
-
 .nav-links a.router-link-active {
-  color: #1890ff;
-}
-
-@media (max-width: 768px) {
-  .nav {
-    padding: 0 1rem;
-  }
-
-  .nav-links {
-    margin-left: 2rem;
-    gap: 1rem;
-  }
+  color: map.get(map.get($colors, 'primary'), 'base');
 }
 
 .main {
   flex: 1;
   background-color: #ffffff;
+  padding-top: 60px;
+
+  // 文档页面时的样式
+  .docs & {
+    background-color: map.get($neutrals, 'gray-1');
+
+    :deep(.status-badge) {
+      .stable {
+        color: map.get(map.get($colors, 'primary'), 'base');
+        background: rgba(map.get(map.get($colors, 'primary'), 'base'), 0.1);
+        border: 1px solid rgba(map.get(map.get($colors, 'primary'), 'base'), 0.2);
+      }
+    }
+
+    :deep(.component-map-button) {
+      color: map.get(map.get($colors, 'primary'), 'base');
+      border: 1px solid rgba(map.get(map.get($colors, 'primary'), 'base'), 0.2);
+      background: rgba(map.get(map.get($colors, 'primary'), 'base'), 0.02);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(map.get(map.get($colors, 'primary'), 'base'), 0.05);
+        border-color: rgba(map.get(map.get($colors, 'primary'), 'base'), 0.4);
+        transform: translateY(-1px);
+      }
+    }
+
+    :deep(.common-components) {
+      background: linear-gradient(135deg, 
+        rgba(map.get(map.get($colors, 'primary'), 'base'), 0.03) 0%,
+        rgba(map.get(map.get($colors, 'primary'), 'light'), 0.02) 100%
+      );
+      border: 1px solid rgba(map.get(map.get($colors, 'primary'), 'base'), 0.1);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 24px;
+    }
+  }
 }
 
 .container {
@@ -162,13 +202,13 @@ const toggleTheme = () => {
 }
 
 h1 {
-  color: #2c3e50;
+  color: map.get($neutrals, 'gray-9');
   text-align: center;
   margin-bottom: 40px;
 }
 
 h2 {
-  color: #666;
+  color: map.get($neutrals, 'gray-6');
   margin-bottom: 20px;
 }
 
@@ -180,30 +220,45 @@ h2 {
 
 .search-box {
   position: relative;
-  margin-left: 2rem;
-  flex: 1;
-  max-width: 400px;
+  flex: 0 0 auto;
+  width: 300px;
+
+  // 文档页面时的样式
+  .docs & {
+    width: 300px;
+  }
 }
 
 .search-input {
   width: 100%;
   padding: 0.5rem 1rem 0.5rem 2.5rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid map.get($neutrals, 'gray-3');
   border-radius: 6px;
   font-size: 0.875rem;
-  color: #374151;
-  background: #f9fafb;
+  color: map.get($neutrals, 'gray-8');
+  background: map.get($neutrals, 'gray-1');
   transition: all 0.3s;
+
+  // 文档页面时的样式
+  .docs & {
+    background: map.get($neutrals, 'white');
+    border-color: map.get($neutrals, 'gray-2');
+
+    &:hover {
+      border-color: map.get($neutrals, 'gray-4');
+    }
+  }
 
   &:focus {
     outline: none;
-    border-color: #1890ff;
-    background: #fff;
-    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+    $primary-base: map.get(map.get($colors, 'primary'), 'base');
+    border-color: $primary-base;
+    background: map.get($neutrals, 'white');
+    box-shadow: 0 0 0 2px rgba($primary-base, 0.1);
   }
 
   &::placeholder {
-    color: #9ca3af;
+    color: map.get($neutrals, 'gray-5');
   }
 }
 
@@ -212,7 +267,7 @@ h2 {
   left: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #9ca3af;
+  color: map.get($neutrals, 'gray-5');
   pointer-events: none;
 }
 
@@ -230,16 +285,22 @@ h2 {
   width: 36px;
   height: 36px;
   border-radius: 6px;
-  color: #666;
+  color: map.get($neutrals, 'gray-6');
   transition: all 0.3s;
   cursor: pointer;
   border: none;
   background: none;
   padding: 0;
 
+  // 文档页面时的样式
+  .docs & {
+    color: map.get($neutrals, 'gray-7');
+  }
+
   &:hover {
-    color: #1890ff;
-    background: #f0f9ff;
+    $primary-base: map.get(map.get($colors, 'primary'), 'base');
+    color: $primary-base;
+    background: rgba($primary-base, 0.1);
   }
 }
 
@@ -251,11 +312,17 @@ h2 {
 
 .version {
   font-size: 0.875rem;
-  color: #666;
+  color: map.get($neutrals, 'gray-6');
   padding: 0.25rem 0.5rem;
-  background: #f3f4f6;
+  background: map.get($neutrals, 'gray-2');
   border-radius: 4px;
   font-family: 'Fira Code', monospace;
+
+  // 文档页面时的样式
+  .docs & {
+    background: map.get($neutrals, 'white');
+    border: 1px solid map.get($neutrals, 'gray-2');
+  }
 }
 
 @media (max-width: 768px) {
@@ -265,7 +332,6 @@ h2 {
 
   .search-box {
     max-width: 200px;
-    margin-left: 1rem;
   }
 
   .nav-actions {
