@@ -1,0 +1,145 @@
+@use '../theme/variables' as *;
+@use 'sass:map';
+
+.v-input {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  
+  &__inner {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: map.get($font-sizes, 'base');
+    font-weight: map.get($font-weights, 'normal');
+    line-height: 1.5;
+    color: map.get($neutrals, 'gray-9');
+    background-color: map.get($neutrals, 'white');
+    background-clip: padding-box;
+    border: 1px solid map.get($neutrals, 'gray-5');
+    border-radius: map.get($border-radius, 'base');
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:focus {
+      color: map.get($neutrals, 'gray-9');
+      background-color: map.get($neutrals, 'white');
+      border-color: map.get(map.get($colors, 'primary'), 'light');
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(map.get(map.get($colors, 'primary'), 'base'), 0.25);
+    }
+
+    &::placeholder {
+      color: map.get($neutrals, 'gray-6');
+      opacity: 1;
+    }
+
+    &:disabled,
+    &[readonly] {
+      background-color: map.get($neutrals, 'gray-3');
+      opacity: 1;
+    }
+  }
+
+  // 尺寸变体
+  &--large {
+    .v-input__inner {
+      padding: 0.5rem 1rem;
+      font-size: map.get($font-sizes, 'lg');
+      border-radius: map.get($border-radius, 'lg');
+    }
+  }
+
+  &--small {
+    .v-input__inner {
+      padding: 0.25rem 0.5rem;
+      font-size: map.get($font-sizes, 'sm');
+      border-radius: map.get($border-radius, 'sm');
+    }
+  }
+
+  // 状态变体
+  &--success {
+    .v-input__inner {
+      border-color: map.get(map.get($colors, 'success'), 'base');
+      
+      &:focus {
+        border-color: map.get(map.get($colors, 'success'), 'light');
+        box-shadow: 0 0 0 0.2rem rgba(map.get(map.get($colors, 'success'), 'base'), 0.25);
+      }
+    }
+  }
+
+  &--warning {
+    .v-input__inner {
+      border-color: map.get(map.get($colors, 'warning'), 'base');
+      
+      &:focus {
+        border-color: map.get(map.get($colors, 'warning'), 'light');
+        box-shadow: 0 0 0 0.2rem rgba(map.get(map.get($colors, 'warning'), 'base'), 0.25);
+      }
+    }
+  }
+
+  &--danger {
+    .v-input__inner {
+      border-color: map.get(map.get($colors, 'danger'), 'base');
+      
+      &:focus {
+        border-color: map.get(map.get($colors, 'danger'), 'light');
+        box-shadow: 0 0 0 0.2rem rgba(map.get(map.get($colors, 'danger'), 'base'), 0.25);
+      }
+    }
+  }
+
+  // 前缀和后缀
+  &__prefix,
+  &__suffix {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 0.75rem;
+    color: map.get($neutrals, 'gray-7');
+    background-color: map.get($neutrals, 'gray-2');
+    border: 1px solid map.get($neutrals, 'gray-5');
+    font-size: map.get($font-sizes, 'base');
+  }
+
+  &__prefix {
+    border-right: 0;
+    border-top-left-radius: map.get($border-radius, 'base');
+    border-bottom-left-radius: map.get($border-radius, 'base');
+  }
+
+  &__suffix {
+    border-left: 0;
+    border-top-right-radius: map.get($border-radius, 'base');
+    border-bottom-right-radius: map.get($border-radius, 'base');
+  }
+
+  &--prefix {
+    .v-input__inner {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &--suffix {
+    .v-input__inner {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  // 清除按钮
+  &__clear {
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: map.get($neutrals, 'gray-6');
+    
+    &:hover {
+      color: map.get($neutrals, 'gray-7');
+    }
+  }
+} 

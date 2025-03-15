@@ -1,0 +1,106 @@
+@use '../theme/variables' as *;
+@use 'sass:map';
+
+/* Spacing Utilities */
+@each $key, $value in $spacings {
+  .m-#{$key} { margin: $value !important; }
+  .mt-#{$key} { margin-top: $value !important; }
+  .mr-#{$key} { margin-right: $value !important; }
+  .mb-#{$key} { margin-bottom: $value !important; }
+  .ml-#{$key} { margin-left: $value !important; }
+  .mx-#{$key} {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+  .my-#{$key} {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+
+  .p-#{$key} { padding: $value !important; }
+  .pt-#{$key} { padding-top: $value !important; }
+  .pr-#{$key} { padding-right: $value !important; }
+  .pb-#{$key} { padding-bottom: $value !important; }
+  .pl-#{$key} { padding-left: $value !important; }
+  .px-#{$key} {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+  .py-#{$key} {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+}
+
+/* Display Utilities */
+.d-none { display: none !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-block { display: block !important; }
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.d-grid { display: grid !important; }
+
+/* Flex Utilities */
+.flex-row { flex-direction: row !important; }
+.flex-column { flex-direction: column !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+.justify-content-start { justify-content: flex-start !important; }
+.justify-content-end { justify-content: flex-end !important; }
+.justify-content-center { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-around { justify-content: space-around !important; }
+.align-items-start { align-items: flex-start !important; }
+.align-items-end { align-items: flex-end !important; }
+.align-items-center { align-items: center !important; }
+.align-items-baseline { align-items: baseline !important; }
+.align-items-stretch { align-items: stretch !important; }
+
+/* Text Utilities */
+@each $key, $value in $font-sizes {
+  .text-#{$key} { font-size: $value !important; }
+}
+
+@each $key, $value in $font-weights {
+  .font-#{$key} { font-weight: $value !important; }
+}
+
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+
+/* Color Utilities */
+@each $color-name, $color-variants in $colors {
+  @each $variant-name, $value in $color-variants {
+    .text-#{$color-name}-#{$variant-name} { color: $value !important; }
+    .bg-#{$color-name}-#{$variant-name} { background-color: $value !important; }
+  }
+}
+
+@each $name, $value in $neutrals {
+  .text-#{$name} { color: $value !important; }
+  .bg-#{$name} { background-color: $value !important; }
+}
+
+/* Border Utilities */
+@each $key, $value in $border-radius {
+  .rounded-#{$key} { border-radius: $value !important; }
+}
+
+/* Shadow Utilities */
+@each $key, $value in $box-shadows {
+  .shadow-#{$key} { box-shadow: #{$value} !important; }
+}
+
+/* Responsive Utilities */
+@each $breakpoint, $width in $breakpoints {
+  @media (min-width: $width) {
+    .d-#{$breakpoint}-none { display: none !important; }
+    .d-#{$breakpoint}-block { display: block !important; }
+    .d-#{$breakpoint}-inline { display: inline !important; }
+    .d-#{$breakpoint}-inline-block { display: inline-block !important; }
+    .d-#{$breakpoint}-flex { display: flex !important; }
+    .d-#{$breakpoint}-inline-flex { display: inline-flex !important; }
+  }
+} 

@@ -10,8 +10,11 @@ import Button from '../components/Button/Button.vue'
         <div class="nav-links">
           <a href="#features">特性</a>
           <a href="#components">组件</a>
-          <a href="#start">快速开始</a>
-          <Button size="small" type="primary">立即体验</Button>
+          <router-link to="/docs/button">组件文档</router-link>
+          <router-link to="/docs/quickstart">快速开始</router-link>
+          <router-link to="/docs/button">
+            <Button size="small" type="primary">立即体验</Button>
+          </router-link>
         </div>
       </nav>
     </header>
@@ -22,8 +25,12 @@ import Button from '../components/Button/Button.vue'
         <p>极致简约 · 优雅现代 · 快速高效</p>
         <div class="hero-subtitle">专为现代 Web 应用打造的下一代 Vue 3 组件库</div>
         <div class="hero-buttons">
-          <Button type="primary" size="large">立即开始</Button>
-          <Button type="secondary" size="large">在线文档</Button>
+          <router-link to="/docs/quickstart">
+            <Button type="primary" size="large">立即开始</Button>
+          </router-link>
+          <router-link to="/docs/button">
+            <Button type="secondary" size="large">在线文档</Button>
+          </router-link>
         </div>
       </div>
     </section>
@@ -83,6 +90,7 @@ import Button from '../components/Button/Button.vue'
         </div>
         <div class="footer-section">
           <h4>资源</h4>
+          <router-link to="/colors">颜色系统</router-link>
           <a href="#">组件</a>
           <a href="#">主题</a>
           <a href="#">示例</a>

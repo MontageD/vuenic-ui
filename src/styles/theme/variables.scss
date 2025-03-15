@@ -1,0 +1,134 @@
+// 主题色系
+$colors: (
+  'primary': (
+    'base': #1890ff,
+    'light': #40a9ff,
+    'lighter': #91d5ff,
+    'dark': #096dd9,
+    'darker': #0050b3
+  ),
+  'success': (
+    'base': #52c41a,
+    'light': #73d13d,
+    'lighter': #b7eb8f,
+    'dark': #389e0d,
+    'darker': #237804
+  ),
+  'warning': (
+    'base': #faad14,
+    'light': #ffc53d,
+    'lighter': #ffe58f,
+    'dark': #d48806,
+    'darker': #ad6800
+  ),
+  'danger': (
+    'base': #ff4d4f,
+    'light': #ff7875,
+    'lighter': #ffa39e,
+    'dark': #cf1322,
+    'darker': #a8071a
+  )
+);
+
+// 中性色
+$neutrals: (
+  'black': #000000,
+  'white': #ffffff,
+  'gray-1': #ffffff,
+  'gray-2': #fafafa,
+  'gray-3': #f5f5f5,
+  'gray-4': #f0f0f0,
+  'gray-5': #d9d9d9,
+  'gray-6': #bfbfbf,
+  'gray-7': #8c8c8c,
+  'gray-8': #595959,
+  'gray-9': #434343,
+  'gray-10': #262626,
+  'gray-11': #1f1f1f,
+  'gray-12': #141414,
+);
+
+// 字体
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+  'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+  'Noto Color Emoji';
+
+// 字号
+$font-sizes: (
+  'xs': 12px,
+  'sm': 14px,
+  'base': 16px,
+  'lg': 18px,
+  'xl': 20px,
+  '2xl': 24px,
+  '3xl': 30px,
+  '4xl': 36px,
+  '5xl': 48px,
+);
+
+// 字重
+$font-weights: (
+  'light': 300,
+  'normal': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+);
+
+// 行高
+$line-heights: (
+  'none': 1,
+  'tight': 1.25,
+  'snug': 1.375,
+  'normal': 1.5,
+  'relaxed': 1.625,
+  'loose': 2,
+);
+
+// 圆角
+$border-radius: (
+  'none': 0,
+  'sm': 2px,
+  'base': 4px,
+  'md': 6px,
+  'lg': 8px,
+  'xl': 12px,
+  '2xl': 16px,
+  'full': 9999px,
+);
+
+// 阴影
+$box-shadows: (
+  'sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+  'base': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+  'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+  'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+  'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+);
+
+// 断点
+$breakpoints: (
+  'xs': 480px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  '2xl': 1600px,
+);
+
+// 间距
+$spacings: (
+  '0': 0,
+  '1': 4px,
+  '2': 8px,
+  '3': 12px,
+  '4': 16px,
+  '5': 20px,
+  '6': 24px,
+  '8': 32px,
+  '10': 40px,
+  '12': 48px,
+  '16': 64px,
+  '20': 80px,
+  '24': 96px,
+); 

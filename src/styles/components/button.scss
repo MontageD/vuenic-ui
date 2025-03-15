@@ -1,0 +1,176 @@
+@use '../theme/variables' as *;
+@use 'sass:map';
+
+.v-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: map.get($font-weights, 'medium');
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: map.get($font-sizes, 'base');
+  border-radius: map.get($border-radius, 'base');
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(map.get(map.get($colors, 'primary'), 'base'), 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  // 类型变体
+  &--primary {
+    color: map.get($neutrals, 'white');
+    background-color: map.get(map.get($colors, 'primary'), 'base');
+    border-color: map.get(map.get($colors, 'primary'), 'base');
+
+    &:hover {
+      background-color: map.get(map.get($colors, 'primary'), 'dark');
+      border-color: map.get(map.get($colors, 'primary'), 'dark');
+    }
+  }
+
+  &--success {
+    color: map.get($neutrals, 'white');
+    background-color: map.get(map.get($colors, 'success'), 'base');
+    border-color: map.get(map.get($colors, 'success'), 'base');
+
+    &:hover {
+      background-color: map.get(map.get($colors, 'success'), 'dark');
+      border-color: map.get(map.get($colors, 'success'), 'dark');
+    }
+  }
+
+  &--warning {
+    color: map.get($neutrals, 'gray-9');
+    background-color: map.get(map.get($colors, 'warning'), 'base');
+    border-color: map.get(map.get($colors, 'warning'), 'base');
+
+    &:hover {
+      background-color: map.get(map.get($colors, 'warning'), 'dark');
+      border-color: map.get(map.get($colors, 'warning'), 'dark');
+    }
+  }
+
+  &--danger {
+    color: map.get($neutrals, 'white');
+    background-color: map.get(map.get($colors, 'danger'), 'base');
+    border-color: map.get(map.get($colors, 'danger'), 'base');
+
+    &:hover {
+      background-color: map.get(map.get($colors, 'danger'), 'dark');
+      border-color: map.get(map.get($colors, 'danger'), 'dark');
+    }
+  }
+
+  // 尺寸变体
+  &--large {
+    padding: 0.5rem 1rem;
+    font-size: map.get($font-sizes, 'lg');
+    border-radius: map.get($border-radius, 'lg');
+  }
+
+  &--small {
+    padding: 0.25rem 0.5rem;
+    font-size: map.get($font-sizes, 'sm');
+    border-radius: map.get($border-radius, 'sm');
+  }
+
+  // 轮廓按钮
+  &--outline {
+    background-color: transparent;
+
+    &.v-button--primary {
+      color: map.get(map.get($colors, 'primary'), 'base');
+      border-color: map.get(map.get($colors, 'primary'), 'base');
+
+      &:hover {
+        color: map.get($neutrals, 'white');
+        background-color: map.get(map.get($colors, 'primary'), 'base');
+      }
+    }
+
+    &.v-button--success {
+      color: map.get(map.get($colors, 'success'), 'base');
+      border-color: map.get(map.get($colors, 'success'), 'base');
+
+      &:hover {
+        color: map.get($neutrals, 'white');
+        background-color: map.get(map.get($colors, 'success'), 'base');
+      }
+    }
+
+    &.v-button--warning {
+      color: map.get(map.get($colors, 'warning'), 'base');
+      border-color: map.get(map.get($colors, 'warning'), 'base');
+
+      &:hover {
+        color: map.get($neutrals, 'gray-9');
+        background-color: map.get(map.get($colors, 'warning'), 'base');
+      }
+    }
+
+    &.v-button--danger {
+      color: map.get(map.get($colors, 'danger'), 'base');
+      border-color: map.get(map.get($colors, 'danger'), 'base');
+
+      &:hover {
+        color: map.get($neutrals, 'white');
+        background-color: map.get(map.get($colors, 'danger'), 'base');
+      }
+    }
+  }
+
+  // 圆形按钮
+  &--circle {
+    border-radius: 50%;
+    padding: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+
+    &.v-button--large {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    &.v-button--small {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  // 加载状态
+  &--loading {
+    position: relative;
+    pointer-events: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1em;
+      height: 1em;
+      margin: -0.5em 0 0 -0.5em;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: button-loading-spinner 0.75s linear infinite;
+    }
+  }
+}
+
+@keyframes button-loading-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+} 
